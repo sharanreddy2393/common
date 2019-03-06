@@ -18,6 +18,7 @@ public class HallInformation {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="HALLID")
 	private int hallId;
 
 	@Column(name = "HALL_NAME")

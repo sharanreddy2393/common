@@ -16,6 +16,7 @@ public class UserInfromation {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="USERID")
 	private int userId;
 	
 	@Column(name="F_NAME")
@@ -35,6 +36,9 @@ public class UserInfromation {
 	
 	@Column(name="STATUS")
 	private String activeStatus;
+	
+	@Column(name="PROFILE_PIC")
+	private String profilePicture;
 	
 	public int getUserId() {
 		return userId;
