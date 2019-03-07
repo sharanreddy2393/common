@@ -57,6 +57,9 @@ public class HallInformation {
 	@Column(name = "HALL_CAPACITY")
 	private int hallCapacity;
 
+	@Column(name="HALL_AVAILABILITY")
+	private String hallAvailability;
+	
 	public int getHallId() {
 		return hallId;
 	}
@@ -159,6 +162,14 @@ public class HallInformation {
 
 	public void setHallCapacity(int hallCapacity) {
 		this.hallCapacity = hallCapacity;
+	}
+
+	public String getHallAvailability() {
+		return hallAvailability;
+	}
+
+	public void setHallAvailability(String hallAvailability) {
+		this.hallAvailability = hallAvailability;
 	}
 
 }
