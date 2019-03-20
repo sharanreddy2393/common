@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name="booking_information")
 public class BookingInformation {
@@ -28,15 +30,16 @@ public class BookingInformation {
 	@JoinColumn(name="USERID",nullable=false)
 	private UserInfromation userId;
 	
-	
 	@OneToOne
 	@JoinColumn(name="HALLID",nullable=false)
 	private HallInformation hallId;
 	
 	@Column(name="fromdate")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	private Date fromDate;
 	
 	@Column(name="todate")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	private Date toDate;
 	
 	@Column(name="num_days")
@@ -85,6 +88,22 @@ public class BookingInformation {
 
 	public void setAdvanceAmount(BigDecimal advanceAmount) {
 		this.advanceAmount = advanceAmount;
+	}
+
+	public UserInfromation getUserId() {
+		return userId;
+	}
+
+	public void setUserId(UserInfromation userId) {
+		this.userId = userId;
+	}
+
+	public HallInformation getHallId() {
+		return hallId;
+	}
+
+	public void setHallId(HallInformation hallId) {
+		this.hallId = hallId;
 	} 
 	
 	
