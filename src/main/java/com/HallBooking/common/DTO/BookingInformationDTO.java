@@ -1,7 +1,7 @@
 package com.HallBooking.common.DTO;
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -11,16 +11,19 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 public class BookingInformationDTO {
 
 	private int userId;
+	
 	private int hallId;
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/mm/yyyy")
+	
 	@JsonSerialize
 	@JsonDeserialize
 	private Date fromDate;
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/mm/yyyy")
+	
 	@JsonSerialize
 	@JsonDeserialize
 	private Date toDate;
+	
 	private int numOfDays;
+	
 	private BigDecimal advanceAmount;
 		
 	public int getUserId() {
