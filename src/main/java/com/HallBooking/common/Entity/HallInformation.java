@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -59,6 +62,10 @@ public class HallInformation {
 
 	@Column(name="HALL_AVAILABILITY")
 	private String hallAvailability;
+	
+	@ManyToOne
+	@JoinColumn(name="ownerid",nullable=false)
+	private OwnerInformation ownerid;
 	
 	public int getHallId() {
 		return hallId;
@@ -170,6 +177,14 @@ public class HallInformation {
 
 	public void setHallAvailability(String hallAvailability) {
 		this.hallAvailability = hallAvailability;
+	}
+
+	public OwnerInformation getOwnerid() {
+		return ownerid;
+	}
+
+	public void setOwnerid(OwnerInformation ownerid) {
+		this.ownerid = ownerid;
 	}
 
 }

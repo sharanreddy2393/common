@@ -31,6 +31,8 @@ public class HallRequest {
 	private int hallCapacity;
 
 	private String hallAvailability;
+	
+	private int ownerid;
 
 	public String getHallName() {
 		return hallName;
@@ -136,5 +138,12 @@ public class HallRequest {
 		this.hallAvailability = hallAvailability;
 	}
 
+	public int getOwnerid() {
+		return ownerid;
+	}
+
+	public void setOwnerid(int ownerid) {
+		this.ownerid = ownerid;
+	}
 	
 }
