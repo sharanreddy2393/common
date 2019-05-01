@@ -1,7 +1,9 @@
 package com.HallBooking.common.Entity;
 
 import java.math.BigDecimal;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -21,9 +24,9 @@ public class HallInformation {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="HALLID")
+	@Column(name = "HALLID")
 	private int hallId;
-	
+
 	@Column(name = "HALL_NAME")
 	private String hallName;
 
@@ -60,13 +63,16 @@ public class HallInformation {
 	@Column(name = "HALL_CAPACITY")
 	private int hallCapacity;
 
-	@Column(name="HALL_AVAILABILITY")
+	@Column(name = "HALL_AVAILABILITY")
 	private String hallAvailability;
-	
+
 	@ManyToOne
-	@JoinColumn(name="ownerid",nullable=false)
-	private OwnerInformation ownerid;
+	@JoinColumn(name = "ownerid")
+	private OwnerInformation ownerInformation;
 	
+	@OneToMany(mappedBy="hallInformation", cascade=CascadeType.ALL)
+	private List<BookingInformation> bookingInformation;
+
 	public int getHallId() {
 		return hallId;
 	}
@@ -179,12 +185,12 @@ public class HallInformation {
 		this.hallAvailability = hallAvailability;
 	}
 
-	public OwnerInformation getOwnerid() {
-		return ownerid;
+	public OwnerInformation getOwnerInformation() {
+		return ownerInformation;
 	}
 
-	public void setOwnerid(OwnerInformation ownerid) {
-		this.ownerid = ownerid;
+	public void setOwnerInformation(OwnerInformation ownerInformation) {
+		this.ownerInformation = ownerInformation;
 	}
 
 }

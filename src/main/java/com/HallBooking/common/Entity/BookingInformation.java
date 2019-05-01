@@ -27,12 +27,12 @@ public class BookingInformation {
 	private String bookingId;
 	
 	@ManyToOne
-	@JoinColumn(name="USERID",nullable=false)
-	private UserInfromation userId;
+	@JoinColumn(name="USERID") // primary key of userInformation Table
+	private UserInfromation userInformation;
 	
-	@OneToOne
-	@JoinColumn(name="HALLID",nullable=false)
-	private HallInformation hallId;
+	@ManyToOne
+	@JoinColumn(name="HALLID") // primary key of hallinformation table
+	private HallInformation hallInformation;
 	
 	@Column(name="fromdate")
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
@@ -90,21 +90,21 @@ public class BookingInformation {
 		this.advanceAmount = advanceAmount;
 	}
 
-	public UserInfromation getUserId() {
-		return userId;
+	public UserInfromation getUserInformation() {
+		return userInformation;
 	}
 
-	public void setUserId(UserInfromation userId) {
-		this.userId = userId;
+	public void setUserInformation(UserInfromation userInformation) {
+		this.userInformation = userInformation;
 	}
 
-	public HallInformation getHallId() {
-		return hallId;
+	public HallInformation getHallInformation() {
+		return hallInformation;
 	}
 
-	public void setHallId(HallInformation hallId) {
-		this.hallId = hallId;
-	} 
+	public void setHallInformation(HallInformation hallInformation) {
+		this.hallInformation = hallInformation;
+	}
 	
 	
 }

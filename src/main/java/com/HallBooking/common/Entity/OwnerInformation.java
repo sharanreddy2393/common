@@ -1,46 +1,53 @@
 package com.HallBooking.common.Entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="OWNER_INFORMATION")
+@Table(name = "OWNER_INFORMATION")
 public class OwnerInformation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="OWNER_ID")
+	@Column(name = "OWNER_ID")
 	private int ownerId;
-	
-	@Column(name="F_NAME")
+
+	@Column(name = "F_NAME")
 	private String fName;
-	
-	@Column(name="L_NAME")
+
+	@Column(name = "L_NAME")
 	private String lName;
-	
-	@Column(name="ADDRESS")
+
+	@Column(name = "ADDRESS")
 	private String address;
-	
-	@Column(name="EMAIL")
+
+	@Column(name = "EMAIL")
 	private String email;
-	
-	@Column(name="ADHAR_CARD")
+
+	@Column(name = "ADHAR_CARD")
 	private String adharNumber;
-	
-	@Column(name="PHONENUMBER")
+
+	@Column(name = "PHONENUMBER")
 	private String phoneNumber;
-	
-	@Column(name="PSWRD")
+
+	@Column(name = "PSWRD")
 	private String password;
-	
-	@Column(name="STATUS")
+
+	@Column(name = "STATUS")
 	private String activeStatus;
-	
-	@Column(name="PROFILE_PIC")
+
+	@Column(name = "PROFILE_PIC")
 	private String profilePicture;
+
+	@OneToMany(mappedBy = "ownerInformation", cascade = CascadeType.ALL)
+	private List<HallInformation> hallInformation;
 
 	public int getOwnerId() {
 		return ownerId;
@@ -121,6 +128,13 @@ public class OwnerInformation {
 	public void setProfilePicture(String profilePicture) {
 		this.profilePicture = profilePicture;
 	}
-	
-	
+
+	public List<HallInformation> getHallInformation() {
+		return hallInformation;
+	}
+
+	public void setHallInformation(List<HallInformation> hallInformation) {
+		this.hallInformation = hallInformation;
+	}
+
 }
